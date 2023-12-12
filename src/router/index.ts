@@ -4,24 +4,54 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      //展示页
       path: '/',
-      name: 'home',
-      component: import('@/views/HomeView.vue'),
+      name: 'dashBoard',
+      component: () => import('@/views/DashboardView.vue'),
       children: [
-        // {
-        //   path: 'dashBoard',
-        //   component: UserProfile
-        // },
-        // {
-        //   path: 'posts',
-        //   component: UserPosts
-        // }
+        {
+          //主页
+          path: '',
+          name: 'index',
+          component: () => import('@/views/pages/IndexView.vue')
+        },
+        {
+          //文档
+          path: 'profile',
+          name: 'profile',
+          component: () => import('@/views/pages/ProfileView.vue')
+        },
+        {
+          //资源
+          path: 'file',
+          name: 'file',
+          component: () => import('@/views/pages/FileView.vue')
+        },
+        {
+          //图片
+          path: 'picture',
+          name: 'picture',
+          component: () => import('@/views/pages/PictureView.vue')
+        },
+        {
+          //用户
+          path: 'user',
+          name: 'user',
+          component: () => import('@/views/pages/UserView.vue')
+        }
       ]
     },
     {
+      //登录页
       path: '/login',
       name: 'login',
-      component: import('@/views/LoginView.vue')
+      component: () => import('@/views/LoginView.vue')
+    },
+    {
+      //404处理
+      path: '/:pathMatch(.*)*',
+      name: '404',
+      component: () => import('@/views/NotFound.vue')
     }
   ]
 })
