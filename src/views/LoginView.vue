@@ -1,53 +1,52 @@
 <script lang="ts" setup>
 //登录页
-import { reactive, computed } from 'vue'
+import { ref, computed } from 'vue'
 import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
-
+import { message } from 'ant-design-vue'
+//mock数据
+const user = {
+  username: 'cqx',
+  password: 'cqx20010118'
+}
+//表单类型
 interface FormState {
   username: string
   password: string
   remember: boolean
 }
-
-const formState = reactive<FormState>({
+//表单
+const formState = ref<FormState>({
   username: '',
   password: '',
   remember: true
 })
-
-const onFinish = (values: any) => {
-  console.log('Success:', values)
+//加载
+const loading = ref<Boolean>(false)
+//登录成功
+const onFinish = (info: FormState) => {
+  loading.value = true
+  if (info.username === user.username && info.password === user.password) {
+    message.success('登陆成功，即将跳转首页')
+    loading.value = false
+  } else {
+    message.warning('用户名或密码不存在')
+    loading.value = false
+  }
 }
-
-const onFinishFailed = (errorInfo: any) => {
-  console.log('Failed:', errorInfo)
-}
-
+//按钮是否禁用
 const disabled = computed(() => {
-  return !(formState.username && formState.password)
+  return !(formState.value.username && formState.value.password)
 })
 </script>
 
 <template>
   <div class="login-top">
-    <div class="top-container">
-      <div class="container-top">
-        <img class="top-logo" src="../assets/icons/logo.png" alt="#" />
-        <h1 class="top-title">My Web</h1>
-      </div>
-      <a-form
-        :model="formState"
-        name="normal_login"
-        @finish="onFinish"
-        @finishFailed="onFinishFailed"
-        :label-col="{ span: 7 }"
-        :wrapper-col="{ span: 9 }"
-      >
-        <a-form-item
-          label="Username"
-          name="username"
-          :rules="[{ required: true, message: 'Please input your username!' }]"
-        >
+    <div class="container">
+      <h1 class="title">My Web</h1>
+      <div class="description">属于你的专属网站</div>
+      <a-form :model="formState" name="basic" @finish="onFinish" class="login-form">
+        <img class="logo" src="../assets/icons/logo.png" />
+        <a-form-item name="username" :rules="[{ required: true, message: '请输入用户名' }]">
           <a-input v-model:value="formState.username">
             <template #prefix>
               <UserOutlined class="site-form-item-icon" />
@@ -55,36 +54,29 @@ const disabled = computed(() => {
           </a-input>
         </a-form-item>
 
-        <a-form-item
-          label="Password"
-          name="password"
-          :rules="[{ required: true, message: 'Please input your password!' }]"
-        >
+        <a-form-item name="password" :rules="[{ required: true, message: '请输入密码' }]" no-style>
           <a-input-password v-model:value="formState.password">
             <template #prefix>
               <LockOutlined class="site-form-item-icon" />
             </template>
           </a-input-password>
         </a-form-item>
-
-        <a-form-item :wrapper-col="{ offset: 5, span: 8 }">
-          <a-form-item name="remember" no-style>
-            <a-checkbox v-model:checked="formState.remember">Remember me</a-checkbox>
-          </a-form-item>
-          <a class="login-form-forgot" href="">Forgot password</a>
-        </a-form-item>
-
-        <a-form-item :wrapper-col="{ offset: 5, span: 8 }">
+        <a-form-item no-style>
+      <a-form-item name="remember" no-style>
+        <a-checkbox v-model:checked="formState.remember">记住我</a-checkbox>
+      </a-form-item>
+      <a class="login-form-forgot" href="">忘记密码</a>
+    </a-form-item>
+        <a-form-item>
           <a-button
             :disabled="disabled"
             type="primary"
             html-type="submit"
-            class="login-form-button"
+            class="login-button"
+            :loading="loading"
+            >登录</a-button
           >
-            Log in
-          </a-button>
-          Or
-          <a href="">register now!</a>
+          <div>没有账号？去注册</div>
         </a-form-item>
       </a-form>
     </div>
@@ -97,25 +89,40 @@ const disabled = computed(() => {
   height: 80vh;
   background-color: #def1e7;
   border-bottom: 1px solid #5cc18d;
+  align-items: center;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: center;
-  .top-container {
-    width: 800px;
-  }
-  .container-top {
-    width: 100%;
+  .container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
-    padding-left: 206px;
-    .top-logo {
-      width: 80px;
-      margin-right: 16px;
+    box-sizing: border-box;
+    padding-top: 10vh;
+    .title {
+      color: #404040;
+      font-size: 100px;
+      margin-bottom: 5px;
     }
-    .top-title {
-      font-size: 50px;
-      color: #333333;
+    .description {
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .login-form {
+      position: relative;
+      width: 400px;
+      .logo {
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        top: 10px;
+        left: -80px;
+      }
+      .login-button {
+        width: 400px;
+        height: 58px;
+        font-size: 20px;
+      }
     }
   }
 }

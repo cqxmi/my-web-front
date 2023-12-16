@@ -14,4 +14,5 @@ import { RouterView } from 'vue-router'
   </a-config-provider>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>
