@@ -103,6 +103,7 @@ const disabled = computed(() => {
       color: #404040;
       font-size: 100px;
       margin-bottom: 5px;
+      font-family: "ff-meta-serif-web-pro","PT Serif",Georgia,"Droid Serif",serif;
     }
     .description {
       margin-bottom: 20px;
