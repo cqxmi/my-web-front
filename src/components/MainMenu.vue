@@ -6,6 +6,7 @@ import {
   EditOutlined,
   CloudOutlined,
   PictureOutlined,
+  FundProjectionScreenOutlined,
   UserOutlined
 } from '@ant-design/icons-vue'
 //声明路由
@@ -28,14 +29,15 @@ function getItem(label: VueElement | string, key: string, icon?: any): Menus {
 //用来渲染的item项
 const items: Menus[] = [
   getItem('主页', 'index', () => h(HomeOutlined)),
-  getItem('文档', 'profile', () => h(EditOutlined)),
+  getItem('笔记', 'note', () => h(EditOutlined)),
   getItem('资源', 'file', () => h(CloudOutlined)),
   getItem('图片', 'picture', () => h(PictureOutlined)),
+  getItem('数据', 'data', () => h(FundProjectionScreenOutlined)),
   getItem('我的', 'user', () => h(UserOutlined))
 ]
 //menu状态
 const state = ref({
-  rootSubmenuKeys: ['index', 'profile', 'file', 'picture', 'user'],
+  rootSubmenuKeys: ['index', 'note', 'file', 'picture', 'data', 'user'],
   selectedKeys: ['index']
 })
 //根据路由参数高亮指定的menu

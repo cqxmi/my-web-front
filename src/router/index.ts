@@ -10,31 +10,37 @@ const router = createRouter({
       component: () => import('@/views/DashboardView.vue'),
       children: [
         {
-          //主页
+          //主页->待办事项+打卡
           path: '',
           name: 'index',
           component: () => import('@/views/pages/IndexView.vue')
         },
         {
-          //文档
-          path: 'profile',
-          name: 'profile',
+          //笔记->存储笔记
+          path: 'note',
+          name: 'note',
           component: () => import('@/views/pages/ProfileView.vue')
         },
         {
-          //资源
+          //资源->存储资源
           path: 'file',
           name: 'file',
           component: () => import('@/views/pages/FileView.vue')
         },
         {
-          //图片
+          //图片->存储图片
           path: 'picture',
           name: 'picture',
           component: () => import('@/views/pages/PictureView.vue')
         },
         {
-          //用户
+          //数据看板->存储图片
+          path: 'data',
+          name: 'data',
+          component: () => import('@/views/pages/DataView.vue')
+        },
+        {
+          //用户->个性化设置
           path: 'user',
           name: 'user',
           component: () => import('@/views/pages/UserView.vue')
