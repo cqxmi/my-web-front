@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>data</div>
+  <div>tool</div>
 </template>
 
 <style scoped></style>

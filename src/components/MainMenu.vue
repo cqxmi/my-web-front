@@ -4,9 +4,8 @@ import { useRouter, useRoute } from 'vue-router'
 import {
   HomeOutlined,
   EditOutlined,
-  CloudOutlined,
+  ToolOutlined,
   PictureOutlined,
-  FundProjectionScreenOutlined,
   UserOutlined
 } from '@ant-design/icons-vue'
 //声明路由
@@ -29,26 +28,25 @@ function getItem(label: VueElement | string, key: string, icon?: any): Menus {
 //用来渲染的item项
 const items: Menus[] = [
   getItem('主页', 'index', () => h(HomeOutlined)),
-  getItem('笔记', 'note', () => h(EditOutlined)),
-  getItem('资源', 'file', () => h(CloudOutlined)),
+  getItem('文档', 'profile', () => h(EditOutlined)),
+  getItem('工具', 'tool', () => h(ToolOutlined)),
   getItem('图片', 'picture', () => h(PictureOutlined)),
-  getItem('数据', 'data', () => h(FundProjectionScreenOutlined)),
   getItem('我的', 'user', () => h(UserOutlined))
 ]
 //menu状态
 const state = ref({
-  rootSubmenuKeys: ['index', 'note', 'file', 'picture', 'data', 'user'],
+  rootSubmenuKeys: ['index', 'profile', 'tool', 'picture', 'user'],
   selectedKeys: ['index']
 })
 //根据路由参数高亮指定的menu
-const getHeightlight = () => {
+const getSelect = () => {
   if (route.path.slice(1) === '') {
     state.value.selectedKeys = ['index']
   } else {
     state.value.selectedKeys = [route.path.slice(1)]
   }
 }
-getHeightlight()
+getSelect()
 //选中回调
 const selectItems = ({ key }: { key: string }) => {
   //切换路由
@@ -61,13 +59,8 @@ const selectItems = ({ key }: { key: string }) => {
 
 <template>
   <div class="menu-container">
-    <a-menu
-      v-model:selectedKeys="state.selectedKeys"
-      style="width: 256px; height: 100%"
-      mode="inline"
-      :items="items"
-      @select="selectItems"
-    >
+    <a-menu v-model:selectedKeys="state.selectedKeys" style="width: 256px; height: 100%" mode="inline" :items="items"
+      @select="selectItems">
     </a-menu>
   </div>
 </template>
@@ -76,16 +69,20 @@ const selectItems = ({ key }: { key: string }) => {
 .menu-container {
   margin-right: 16px;
 }
+
 ::v-deep .ant-menu {
   border-radius: 4px;
 }
+
 ::v-deep .ant-menu-item {
   height: 50px;
   font-size: 18px;
 }
+
 ::v-deep .ant-menu-item-icon {
   font-size: 18px !important;
 }
+
 ::v-deep .ant-menu-item-icon:nth-of-type(2) {
   margin-top: 5px !important;
 }
