@@ -29,13 +29,13 @@ function getItem(label: VueElement | string, key: string, icon?: any): Menus {
 const items: Menus[] = [
   getItem('主页', 'index', () => h(HomeOutlined)),
   getItem('文档', 'profile', () => h(EditOutlined)),
-  getItem('工具', 'tool', () => h(ToolOutlined)),
+  getItem('工具', 'toolbox', () => h(ToolOutlined)),
   getItem('图片', 'picture', () => h(PictureOutlined)),
   getItem('我的', 'user', () => h(UserOutlined))
 ]
 //menu状态
 const state = ref({
-  rootSubmenuKeys: ['index', 'profile', 'tool', 'picture', 'user'],
+  rootSubmenuKeys: ['index', 'profile', 'toolbox', 'picture', 'user'],
   selectedKeys: ['index']
 })
 //根据路由参数高亮指定的menu
