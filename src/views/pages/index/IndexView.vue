@@ -1,33 +1,68 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import TodoList from './components/TodoList.vue'
-import DailyCheck from './components/DailyCheck.vue'
-import DataShow from './components/DataShow.vue'
-//tab控制
-const activeKey = ref('1');
 </script>
 
 <template>
   <div class="index-container">
-    <a-tabs v-model:activeKey="activeKey" class="index-tab">
-      <a-tab-pane key="1" tab="待办事项">
-        <TodoList></TodoList>
-      </a-tab-pane>
-      <a-tab-pane key="2" tab="日常打卡">
-        <DailyCheck></DailyCheck>
-      </a-tab-pane>
-      <a-tab-pane key="3" tab="数据统计">
-        <DataShow></DataShow>
-      </a-tab-pane>
-    </a-tabs>
+    <div class="index-icons">
+      <!-- <img class="icons-item" src="../../../assets/menus/todo.png"/> -->
+      <div class="icons-item todo"></div>
+      <div class="icons-item todo-select"></div>
+      <div class="icons-item check"></div>
+      <div class="icons-item check-select"></div>
+      <div class="icons-item data"></div>
+      <div class="icons-item data-select"></div>
+      <!-- <img class="icons-item" src="../../../assets/menus/todo-select.png"/>
+      <img class="icons-item" src="../../../assets/menus/check.png"/>
+      <img class="icons-item" src="../../../assets/menus/check-select.png"/>
+      <img class="icons-item" src="../../../assets/menus/data.png"/>
+      <img class="icons-item" src="../../../assets/menus/data-select.png"/> -->
+    </div>
   </div>
 </template>
 
 <style scoped lang="less">
 .index-container {
-  padding-left: 16px;
-
-  .index-tab {
-    width: 100%;
+  .index-icons {
+    width:5%;
+    background-color: #f9f9f9;
+    height:100%;
+    border-right:1px solid #f2f3f5;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top:16px;
+    .icons-item {
+      width:22px;
+      height:22px;
+      border-radius: 50%;
+      margin-bottom:16px;
+      cursor:pointer;
+      overflow: hidden;
+    }
+    .todo {
+      background-image: url('../../../assets/menus/todo.png');
+      background-size: 25px;
+    }
+    .todo-select {
+      background-image: url('../../../assets/menus/todo-select.png');
+      background-size: 25px;
+    }
+    .check {
+      background-image: url('../../../assets/menus/check.png');
+      background-size: 22px;
+    }
+    .check-select {
+      background-image: url('../../../assets/menus/check-select.png');
+      background-size: 22px;
+    }
+    .data {
+      background-image: url('../../../assets/menus/data.png');
+      background-size: 25px;
+    }
+    .data-select {
+      background-image: url('../../../assets/menus/data-select.png');
+      background-size: 25px;
+    }
   }
-}</style>
+}
+</style>
