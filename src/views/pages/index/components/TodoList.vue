@@ -9,12 +9,12 @@ const tab = ref(1)
   <div class="todo-container">
     <div class="todo-icons">
       <div class="icons-item" @click="tab = 1">
-        <img v-if="tab === 1" class="icons" src="../../../assets/menus/todo-select.png" />
-        <img v-else class="icons" src="../../../assets/menus/todo.png" />
+        <img v-if="tab === 1" class="icons" src="../../../../assets/menus/undo-select.png" />
+        <img v-else class="icons" src="../../../../assets/menus/undo.png" />
       </div>
       <div class="icons-item" @click="tab = 2">
-        <img v-if="tab === 2" class="icons" src="../../../assets/menus/check-select.png" />
-        <img v-else class="icons" src="../../../assets/menus/check.png" />
+        <img v-if="tab === 2" class="icons" src="../../../../assets/menus/done-select.png" />
+        <img v-else class="icons" src="../../../../assets/menus/done.png" />
       </div>
     </div>
     <div class="todo-dashboard"></div>
@@ -31,7 +31,7 @@ const tab = ref(1)
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 16px;
+    padding-top: 18px;
     height:100%;
 
     .icons-item {
@@ -40,14 +40,13 @@ const tab = ref(1)
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       cursor: pointer;
-      background-color: white;
       border: 1px solid 9f9f9f;
 
       .icons {
-        width: 25px;
-        height: 25px;
+        width: 22px;
+        height: 22px;
       }
     }
   }
