@@ -10,15 +10,15 @@ const tab = ref(1)
 <template>
   <div class="index-container">
     <div class="index-icons">
-      <div class="icons-item" @click="tab = 1">
+      <div class="icons-item" :class="tab === 1 ? '' : 'icons-hover'" @click="tab = 1">
         <img v-if="tab === 1" class="icons" src="../../../assets/menus/todo-select.png" />
         <img v-else class="icons" src="../../../assets/menus/todo.png" />
       </div>
-      <div class="icons-item" @click="tab = 2">
+      <div class="icons-item" :class="tab === 2 ? '' : 'icons-hover'" @click="tab = 2">
         <img v-if="tab === 2" class="icons" src="../../../assets/menus/check-select.png" />
         <img v-else class="icons" src="../../../assets/menus/check.png" />
       </div>
-      <div class="icons-item" @click="tab = 3">
+      <div class="icons-item" :class="tab === 3 ? '' : 'icons-hover'" @click="tab = 3">
         <img v-if="tab === 3" class="icons" src="../../../assets/menus/data-select.png" />
         <img v-else class="icons" src="../../../assets/menus/data.png" />
       </div>
@@ -58,13 +58,16 @@ const tab = ref(1)
         height: 25px;
       }
     }
+
+    .icons-hover:hover {
+      background-color: #f0f0f0 !important;
+    }
   }
   .index-dashboard {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    padding-top:16px;
-    padding-left:16px;
+    overflow: hidden;
   }
 }
 </style>
