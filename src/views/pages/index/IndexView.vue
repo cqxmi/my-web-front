@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import DailyCheck from './components/DailyCheck.vue'
-import DataShow from './components/DataShow.vue'
-import TodoList from './components/TodoList.vue'
+import DailyCheck from './components/daily-check/DailyCheck.vue'
+import DataShow from './components/data-show/DataShow.vue'
+import TodoList from './components/todo-list/TodoList.vue'
 //切换小tab
 const tab = ref(1)
 </script>
@@ -58,7 +58,6 @@ const tab = ref(1)
         height: 25px;
       }
     }
-
     .icons-hover:hover {
       background-color: #f0f0f0 !important;
     }

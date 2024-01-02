@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    ACheckbox: typeof import('ant-design-vue/es')['Checkbox']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
     AMenu: typeof import('ant-design-vue/es')['Menu']
     MainMenu: typeof import('./src/components/MainMenu.vue')['default']
