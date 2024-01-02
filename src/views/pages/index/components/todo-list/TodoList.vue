@@ -1,34 +1,37 @@
 <script setup lang="ts">
 //待办事项
-import { ref } from 'vue'
 import TodoItems from './components/TodoItems.vue'
-//切换小tab
-const tab = ref(1)
+import { ref, watch } from 'vue'
+//监听折叠面板变化
+const activeKey = ref(['1'])
+watch(activeKey, (val) => {
+  console.log(val)
+})
 </script>
 
 <template>
   <div class="todo-container">
-    <div class="todo-icons">
-      <div class="icons-item" :class="tab === 1 ? 'select' : ''" @click="tab = 1">
-        <img v-if="tab === 1" class="icons" src="../../../../../assets/menus/undo-select.png" />
-        <img v-else class="icons" src="../../../../../assets/menus/undo.png" />
-        <div class="icons-description">待完成</div>
-      </div>
-      <div class="icons-item" :class="tab === 2 ? 'select' : ''" @click="tab = 2">
-        <img v-if="tab === 2" class="icons" src="../../../../../assets/menus/done-select.png" />
-        <img v-else class="icons" src="../../../../../assets/menus/done.png" />
-        <div class="icons-description">已完成</div>
-      </div>
-    </div>
     <div class="todo-dashboard">
       <div class="dashboard-todoList">
         <div class="dashboard-todos">
           <div class="todos-add"></div>
           <div class="todos-list">
-            <TodoItems></TodoItems>
+            <a-collapse v-model:activeKey="activeKey" ghost>
+              <a-collapse-panel key="1" header="待完成">
+                <TodoItems></TodoItems>
+                <TodoItems></TodoItems>
+                <TodoItems></TodoItems>
+              </a-collapse-panel>
+              <a-collapse-panel key="2" header="已完成">
+                <TodoItems></TodoItems>
+              </a-collapse-panel>
+            </a-collapse>
           </div>
         </div>
-        <div class="dashboard-add"></div>
+        <div class="dashboard-detail">
+          <img class="detail-pic" src="../../../../../assets/pic/click-toknow.png" alt="">
+          <div class="detail-edit">点击进行编辑</div>
+        </div>
       </div>
     </div>
   </div>
@@ -39,37 +42,6 @@ const tab = ref(1)
   width: 100%;
   height: 100%;
   display: flex;
-  .todo-icons {
-    width: 6%;
-    border-right: 1px solid #f2f3f5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 6px;
-    height: 100%;
-    .icons-item {
-      padding: 5px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 3px;
-      cursor: pointer;
-      border-radius: 6px;
-
-      .icons {
-        width: 16px;
-        height: 16px;
-        margin-right: 6px;
-      }
-      .icons-description {
-        font-size: 15px;
-        height: 21px;
-      }
-    }
-    .icons-item:hover {
-      background-color: #f0f0f0;
-    }
-  }
   .todo-dashboard {
     box-sizing: border-box;
     width: 100%;
@@ -91,9 +63,21 @@ const tab = ref(1)
           margin-bottom: 16px;
         }
       }
-      .dashboard-add {
+      .dashboard-detail {
         width: 35%;
         height: 100%;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .detail-pic {
+          width:100px;
+        }
+        .detail-edit {
+          font-size: 14px;
+          color:grey;
+          margin-top:24px;
+        }
       }
     }
   }
@@ -101,5 +85,11 @@ const tab = ref(1)
     background-color: #e9f7ee !important;
     color: #42b883 !important;
   }
+}
+::v-deep .ant-collapse-content-box {
+  padding-top:0 !important;
+}
+::v-deep .ant-collapse-header {
+  padding-bottom:0 !important;
 }
 </style>
