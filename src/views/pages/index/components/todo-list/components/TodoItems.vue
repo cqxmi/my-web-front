@@ -1,11 +1,27 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+const checked = ref(false)
+interface TodoItem {
+  id: number
+  content: string
+  time: string
+  done: boolean
+}
+const props = defineProps({
+  items: {
+    type: Object as () => TodoItem,
+    required: true
+  }
+})
+checked.value = props.items.done
+</script>
 
 <template>
   <div class="item">
     <div class="item-left">
-      <a-checkbox>待办事项1</a-checkbox>
+      <a-checkbox v-model:checked="checked">{{ items.content }}</a-checkbox>
     </div>
-    <div class="item-right">2024-01-08</div>
+    <div class="item-right">{{ items.time }}</div>
   </div>
 </template>
 
@@ -31,7 +47,7 @@
 ::v-deep .ant-checkbox-inner {
   border: 1px solid #d9d9d9 !important;
 }
-::v-deep .ant-checkbox-wrapper:hover .ant-checkbox-inner{
-    background-color:#efefef;
+::v-deep .ant-checkbox-wrapper:hover .ant-checkbox-inner {
+  background-color: #efefef;
 }
 </style>

@@ -1,12 +1,27 @@
 <script setup lang="ts">
 //待办事项
 import TodoItems from './components/TodoItems.vue'
+import mockdata from '@/mock/index'
 import { ref, watch } from 'vue'
 //监听折叠面板变化
 const activeKey = ref(['1'])
 watch(activeKey, (val) => {
   console.log(val)
 })
+//事项
+interface TodoItem {
+  id: number
+  content: string
+  time: string
+  done: boolean
+}
+const todos = ref<TodoItem[]>([])
+const dones = ref<TodoItem[]>([])
+const getTodos = () => {
+  todos.value = mockdata.todos
+  dones.value = mockdata.dones
+}
+getTodos()
 </script>
 
 <template>
@@ -18,18 +33,16 @@ watch(activeKey, (val) => {
           <div class="todos-list">
             <a-collapse v-model:activeKey="activeKey" ghost>
               <a-collapse-panel key="1" header="待完成">
-                <TodoItems></TodoItems>
-                <TodoItems></TodoItems>
-                <TodoItems></TodoItems>
+                <TodoItems v-for="ele in todos" :key="ele.id" :items="ele"></TodoItems>
               </a-collapse-panel>
               <a-collapse-panel key="2" header="已完成">
-                <TodoItems></TodoItems>
+                <TodoItems v-for="ele in dones" :key="ele.id" :items="ele"></TodoItems>
               </a-collapse-panel>
             </a-collapse>
           </div>
         </div>
         <div class="dashboard-detail">
-          <img class="detail-pic" src="../../../../../assets/pic/click-toknow.png" alt="">
+          <img class="detail-pic" src="../../../../../assets/pic/click-toknow.png" alt="" />
           <div class="detail-edit">点击进行编辑</div>
         </div>
       </div>
@@ -52,7 +65,8 @@ watch(activeKey, (val) => {
       display: flex;
       .dashboard-todos {
         width: 65%;
-        height: 100%;
+        height: 87vh;
+        overflow-y: scroll;
         padding: 16px;
         border-right: 1px solid #f2f3f5;
         .todos-add {
@@ -66,17 +80,17 @@ watch(activeKey, (val) => {
       .dashboard-detail {
         width: 35%;
         height: 100%;
-        display:flex;
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         .detail-pic {
-          width:100px;
+          width: 100px;
         }
         .detail-edit {
           font-size: 14px;
-          color:grey;
-          margin-top:24px;
+          color: grey;
+          margin-top: 24px;
         }
       }
     }
@@ -87,9 +101,9 @@ watch(activeKey, (val) => {
   }
 }
 ::v-deep .ant-collapse-content-box {
-  padding-top:0 !important;
+  padding-top: 0 !important;
 }
 ::v-deep .ant-collapse-header {
-  padding-bottom:0 !important;
+  padding-bottom: 0 !important;
 }
 </style>
