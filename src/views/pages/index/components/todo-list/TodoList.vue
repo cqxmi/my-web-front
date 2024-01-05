@@ -3,10 +3,18 @@
 import TodoItems from './components/TodoItems.vue'
 import mockdata from '@/mock/index'
 import { ref, watch } from 'vue'
+import { PlusOutlined } from '@ant-design/icons-vue'
 //监听折叠面板变化
 const activeKey = ref(['1'])
 watch(activeKey, (val) => {
   console.log(val)
+})
+//添加事项
+const addItem = ref<TodoItem>({
+  id: 1,
+  content: '',
+  time: '',
+  done: false
 })
 //事项
 interface TodoItem {
@@ -29,7 +37,11 @@ getTodos()
     <div class="todo-dashboard">
       <div class="dashboard-todoList">
         <div class="dashboard-todos">
-          <div class="todos-add"></div>
+          <a-input-group class="todos-add">
+            <a-input v-model:value="addItem.content" placeholder="输入事项" style="width: 79%; margin-right: 10px;border-radius: 6px" />
+            <a-date-picker v-model:value="addItem.time" style="width: 13%; margin-right: 10px" placeholder="选择日期"/>
+            <a-button style="width: 5%"><PlusOutlined /></a-button>
+          </a-input-group>
           <div class="todos-list">
             <a-collapse v-model:activeKey="activeKey" ghost>
               <a-collapse-panel key="1" header="待完成">
@@ -72,9 +84,9 @@ getTodos()
         .todos-add {
           width: 100%;
           height: 32px;
-          background-color: #f8f8f8 !important;
           border-radius: 6px;
           margin-bottom: 16px;
+          padding: 0 16px;
         }
       }
       .dashboard-detail {

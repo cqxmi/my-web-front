@@ -7,10 +7,14 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AButton: typeof import('ant-design-vue/es')['Button']
     ACheckbox: typeof import('ant-design-vue/es')['Checkbox']
     ACollapse: typeof import('ant-design-vue/es')['Collapse']
     ACollapsePanel: typeof import('ant-design-vue/es')['CollapsePanel']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
+    ADatePicker: typeof import('ant-design-vue/es')['DatePicker']
+    AInput: typeof import('ant-design-vue/es')['Input']
+    AInputGroup: typeof import('ant-design-vue/es')['InputGroup']
     AMenu: typeof import('ant-design-vue/es')['Menu']
     MainMenu: typeof import('./src/components/MainMenu.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
