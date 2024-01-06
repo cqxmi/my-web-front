@@ -6,12 +6,23 @@ import mockdata from '@/mock/index'
 import { ref, watch } from 'vue'
 import { PlusOutlined } from '@ant-design/icons-vue'
 import type { TodoItem } from '@/types/index'
+import { message } from 'ant-design-vue'
 
 //监听折叠面板变化
 const activeKey = ref(['1'])
 watch(activeKey, (val) => {
   console.log(val)
 })
+//格式化时间
+const initTime = ref<Dayjs>()
+//禁用时间
+const disabledDate = (current: Dayjs) => {
+  return current && current < dayjs().startOf('day')
+}
+//日期格式化
+const changeDate = (e: Dayjs) => {
+  addItem.value.time = e.format('YYYY-MM-DD')
+}
 //添加事项
 const addItem = ref<TodoItem>({
   id: 1,
@@ -20,11 +31,11 @@ const addItem = ref<TodoItem>({
   done: false
 })
 const addItems = () => {
-  console.log(addItem.value)
-}
-//禁用时间
-const disabledDate = (current: Dayjs) => {
-  return current && current < dayjs().startOf('day')
+  //验证
+  if (!addItem.value.content || !addItem.value.time) {
+    message.warning('请填写内容与时间')
+    return
+  }
 }
 
 const todos = ref<TodoItem[]>([])
@@ -48,10 +59,12 @@ getTodos()
               style="width: 79%; margin-right: 10px; border-radius: 6px"
             />
             <a-date-picker
-              v-model:value="addItem.time"
+              v-model:value="initTime"
               style="width: 13%; margin-right: 10px"
               placeholder="选择日期"
               :disabled-date="disabledDate"
+              @change="changeDate"
+              format="YYYY-MM-DD"
             />
             <a-button style="width: 5%" @click="addItems"><PlusOutlined /></a-button>
           </a-input-group>
