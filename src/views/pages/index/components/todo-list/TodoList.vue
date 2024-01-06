@@ -36,6 +36,13 @@ const addItems = () => {
     message.warning('请填写内容与时间')
     return
   }
+  console.log(addItem.value)
+}
+//选中id
+const selectId = ref<number>(-1)
+const select = (ele: TodoItem) => {
+  selectId.value = ele.id
+  console.log(selectId.value)
 }
 
 const todos = ref<TodoItem[]>([])
@@ -71,17 +78,43 @@ getTodos()
           <div class="todos-list">
             <a-collapse v-model:activeKey="activeKey" ghost>
               <a-collapse-panel key="1" header="待完成">
-                <TodoItems v-for="ele in todos" :key="ele.id" :items="ele"></TodoItems>
+                <TodoItems
+                  v-for="ele in todos"
+                  :key="ele.id"
+                  :items="ele"
+                  @click="select(ele)"
+                  :class="selectId === ele.id ? 'selectItem' : ''"
+                ></TodoItems>
               </a-collapse-panel>
               <a-collapse-panel key="2" header="已完成">
-                <TodoItems v-for="ele in dones" :key="ele.id" :items="ele"></TodoItems>
+                <TodoItems
+                  v-for="ele in dones"
+                  :key="ele.id"
+                  :items="ele"
+                  @click="select(ele)"
+                  :class="selectId === ele.id ? 'selectItem' : ''"
+                ></TodoItems>
               </a-collapse-panel>
             </a-collapse>
           </div>
         </div>
         <div class="dashboard-detail">
-          <img class="detail-pic" src="../../../../../assets/pic/click-toknow.png" alt="" />
-          <div class="detail-edit">点击进行编辑</div>
+          <div class="dashboard-default" v-if="selectId === -1">
+            <img class="detail-pic" src="../../../../../assets/pic/click-toknow.png" alt="" />
+            <div class="detail-edit">点击进行编辑</div>
+          </div>
+          <div class="dashboard-edit" v-else>
+            <div class="data-dashboard">
+              <a-checkbox style="margin-right:8px;padding-right:8px;border-right:1px solid #d1d1d1"></a-checkbox>
+              <a-date-picker
+                placeholder="选择日期"
+                :disabled-date="disabledDate"
+                @change="changeDate"
+                format="YYYY-MM-DD"
+              />
+            </div>
+            <a-textarea class="a-textareas" />
+          </div>
         </div>
       </div>
     </div>
@@ -118,17 +151,33 @@ getTodos()
       .dashboard-detail {
         width: 35%;
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        .detail-pic {
-          width: 100px;
+        .dashboard-default {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .detail-pic {
+            width: 100px;
+          }
+          .detail-edit {
+            font-size: 14px;
+            color: grey;
+            margin-top: 24px;
+          }
         }
-        .detail-edit {
-          font-size: 14px;
-          color: grey;
-          margin-top: 24px;
+        .dashboard-edit {
+          width: 100%;
+          height: 100%;
+          padding: 16px 10px;
+          box-sizing: border-box;
+          .data-dashboard {
+            margin-bottom:12px;
+            padding-left:10px;
+            border-bottom: 1px solid #f2f3f5;
+            padding-bottom:12px;
+          }
         }
       }
     }
@@ -143,5 +192,39 @@ getTodos()
 }
 ::v-deep .ant-collapse-header {
   padding-bottom: 0 !important;
+}
+::v-deep .ant-checkbox-inner {
+  border: 1px solid #d9d9d9 !important;
+}
+::v-deep .ant-checkbox-wrapper:hover .ant-checkbox-inner {
+  background-color: #efefef;
+}
+::v-deep .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #c2c6d0 !important;
+}
+::v-deep .ant-checkbox-wrapper-checked:hover .ant-checkbox-inner {
+  background-color: #6e7075 !important;
+}
+::v-deep .ant-checkbox-wrapper-checked:hover .ant-checkbox-checked:after {
+  border-color: #6e7075 !important;
+}
+::v-deep .ant-checkbox-checked:after {
+  border: none;
+}
+.selectItem {
+  background-color: #e9f7ee !important;
+}
+.selectItem:hover {
+  background-color: #e9f7ee !important;
+}
+.a-textareas {
+  border: none;
+  font-size: 20px;
+}
+textarea,
+textarea.ant-input:hover,
+textarea:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 </style>

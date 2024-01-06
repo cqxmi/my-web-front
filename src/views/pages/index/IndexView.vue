@@ -4,7 +4,7 @@ import DailyCheck from './components/daily-check/DailyCheck.vue'
 import DataShow from './components/data-show/DataShow.vue'
 import TodoList from './components/todo-list/TodoList.vue'
 //切换小tab
-const tab = ref(1)
+const tab = ref<number>(1)
 </script>
 
 <template>
