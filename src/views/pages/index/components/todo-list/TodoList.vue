@@ -1,9 +1,12 @@
 <script setup lang="ts">
 //待办事项
+import dayjs, { Dayjs } from 'dayjs'
 import TodoItems from './components/TodoItems.vue'
 import mockdata from '@/mock/index'
 import { ref, watch } from 'vue'
 import { PlusOutlined } from '@ant-design/icons-vue'
+import type { TodoItem } from '@/types/index'
+
 //监听折叠面板变化
 const activeKey = ref(['1'])
 watch(activeKey, (val) => {
@@ -16,13 +19,14 @@ const addItem = ref<TodoItem>({
   time: '',
   done: false
 })
-//事项
-interface TodoItem {
-  id: number
-  content: string
-  time: string
-  done: boolean
+const addItems = () => {
+  console.log(addItem.value)
 }
+//禁用时间
+const disabledDate = (current: Dayjs) => {
+  return current && current < dayjs().startOf('day')
+}
+
 const todos = ref<TodoItem[]>([])
 const dones = ref<TodoItem[]>([])
 const getTodos = () => {
@@ -38,9 +42,18 @@ getTodos()
       <div class="dashboard-todoList">
         <div class="dashboard-todos">
           <a-input-group class="todos-add">
-            <a-input v-model:value="addItem.content" placeholder="输入事项" style="width: 79%; margin-right: 10px;border-radius: 6px" />
-            <a-date-picker v-model:value="addItem.time" style="width: 13%; margin-right: 10px" placeholder="选择日期"/>
-            <a-button style="width: 5%"><PlusOutlined /></a-button>
+            <a-input
+              v-model:value="addItem.content"
+              placeholder="输入事项"
+              style="width: 79%; margin-right: 10px; border-radius: 6px"
+            />
+            <a-date-picker
+              v-model:value="addItem.time"
+              style="width: 13%; margin-right: 10px"
+              placeholder="选择日期"
+              :disabled-date="disabledDate"
+            />
+            <a-button style="width: 5%" @click="addItems"><PlusOutlined /></a-button>
           </a-input-group>
           <div class="todos-list">
             <a-collapse v-model:activeKey="activeKey" ghost>

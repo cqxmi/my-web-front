@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { TodoItem } from '@/types/index'
+
 const checked = ref(false)
-interface TodoItem {
-  id: number
-  content: string
-  time: string
-  done: boolean
-}
 const props = defineProps({
   items: {
     type: Object as () => TodoItem,
