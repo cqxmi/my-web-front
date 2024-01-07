@@ -67,13 +67,13 @@ getTodos()
             />
             <a-date-picker
               v-model:value="initTime"
-              style="width: 13%; margin-right: 10px"
+              style="width: 12%; margin-right: 10px"
               placeholder="选择日期"
               :disabled-date="disabledDate"
               @change="changeDate"
               format="YYYY-MM-DD"
             />
-            <a-button style="width: 5%" @click="addItems"><PlusOutlined /></a-button>
+            <a-button style="width: 6%" @click="addItems"><PlusOutlined /></a-button>
           </a-input-group>
           <div class="todos-list">
             <a-collapse v-model:activeKey="activeKey" ghost>
@@ -105,17 +105,20 @@ getTodos()
           </div>
           <div class="dashboard-edit" v-else>
             <div class="data-dashboard">
-              <a-checkbox
-                style="margin-right: 8px; padding-right: 8px; border-right: 1px solid #d1d1d1"
-              ></a-checkbox>
-              <a-date-picker
-                placeholder="选择日期"
-                :disabled-date="disabledDate"
-                @change="changeDate"
-                format="YYYY-MM-DD"
-              />
+              <div>
+                <a-checkbox
+                  style="margin-right: 8px; padding-right: 8px; border-right: 1px solid #d1d1d1"
+                ></a-checkbox>
+                <a-date-picker
+                  placeholder="选择日期"
+                  :disabled-date="disabledDate"
+                  @change="changeDate"
+                  format="YYYY-MM-DD"
+                />
+              </div>
+              <a-button class="button delete" danger>删除</a-button>
             </div>
-            <a-textarea class="a-textareas" placeholder="请输入事项"/>
+            <a-textarea class="a-textareas" placeholder="请输入事项" />
           </div>
         </div>
       </div>
@@ -179,6 +182,8 @@ getTodos()
             padding-left: 10px;
             border-bottom: 1px solid #f2f3f5;
             padding-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
           }
         }
       }
@@ -235,5 +240,9 @@ textarea:focus {
 }
 ::webkit-scrollbar {
   display: none !important;
+}
+.delete:hover {
+  background-color: #ff4d4f;
+  color: white !important;
 }
 </style>
