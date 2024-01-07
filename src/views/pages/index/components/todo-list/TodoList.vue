@@ -105,7 +105,9 @@ getTodos()
           </div>
           <div class="dashboard-edit" v-else>
             <div class="data-dashboard">
-              <a-checkbox style="margin-right:8px;padding-right:8px;border-right:1px solid #d1d1d1"></a-checkbox>
+              <a-checkbox
+                style="margin-right: 8px; padding-right: 8px; border-right: 1px solid #d1d1d1"
+              ></a-checkbox>
               <a-date-picker
                 placeholder="选择日期"
                 :disabled-date="disabledDate"
@@ -113,7 +115,7 @@ getTodos()
                 format="YYYY-MM-DD"
               />
             </div>
-            <a-textarea class="a-textareas" />
+            <a-textarea class="a-textareas" placeholder="请输入事项"/>
           </div>
         </div>
       </div>
@@ -137,7 +139,7 @@ getTodos()
       .dashboard-todos {
         width: 65%;
         height: 87vh;
-        overflow-y: scroll;
+        overflow-y: auto;
         padding: 16px;
         border-right: 1px solid #f2f3f5;
         .todos-add {
@@ -173,10 +175,10 @@ getTodos()
           padding: 16px 10px;
           box-sizing: border-box;
           .data-dashboard {
-            margin-bottom:12px;
-            padding-left:10px;
+            margin-bottom: 12px;
+            padding-left: 10px;
             border-bottom: 1px solid #f2f3f5;
-            padding-bottom:12px;
+            padding-bottom: 12px;
           }
         }
       }
@@ -220,11 +222,18 @@ getTodos()
 .a-textareas {
   border: none;
   font-size: 20px;
+  resize: none;
+  width: 100%;
+  height: calc(82vh);
+  overflow-y: auto;
 }
 textarea,
 textarea.ant-input:hover,
 textarea:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+::webkit-scrollbar {
+  display: none !important;
 }
 </style>

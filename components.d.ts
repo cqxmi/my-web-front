@@ -15,6 +15,7 @@ declare module 'vue' {
     ADatePicker: typeof import('ant-design-vue/es')['DatePicker']
     AInput: typeof import('ant-design-vue/es')['Input']
     AInputGroup: typeof import('ant-design-vue/es')['InputGroup']
+    AInputSearch: typeof import('ant-design-vue/es')['InputSearch']
     AMenu: typeof import('ant-design-vue/es')['Menu']
     ATextarea: typeof import('ant-design-vue/es')['Textarea']
     MainMenu: typeof import('./src/components/MainMenu.vue')['default']

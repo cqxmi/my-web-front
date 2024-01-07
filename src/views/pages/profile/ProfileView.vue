@@ -61,7 +61,7 @@ const onSearch = (searchValue: string) => {
     .profile-list {
       height: 82vh;
       padding-right: 10px;
-      overflow-y: scroll;
+      overflow-y: auto;
       .profile-detail {
         height: 100px;
         border: 1px solid #f2f3f5;
