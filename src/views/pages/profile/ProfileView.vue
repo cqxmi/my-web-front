@@ -1,10 +1,17 @@
 <script setup lang="ts">
+import gfm from '@bytemd/plugin-gfm'
+import { Editor } from '@bytemd/vue'
 import { ref } from 'vue'
 //搜索框
-const value = ref<string>('')
+const values = ref<string>('')
 const onSearch = (searchValue: string) => {
   console.log('use value', searchValue)
-  console.log('or use this.value', value.value)
+  console.log('or use this.value', values.value)
+}
+const plugins = [gfm()]
+const value = ref<string>('')
+const handleChange = (v:any) => {
+  value.value = v
 }
 </script>
 
@@ -13,7 +20,7 @@ const onSearch = (searchValue: string) => {
     <div class="box-left">
       <div class="search">
         <a-input-search
-          v-model:value="value"
+          v-model:value="values"
           placeholder="搜索笔记"
           enter-button
           @search="onSearch"
@@ -40,6 +47,7 @@ const onSearch = (searchValue: string) => {
         <a-button class="button edit">编辑</a-button>
         <a-button class="button delete" danger>删除</a-button>
       </div>
+      <Editor :value="value" :plugins="plugins" @change="handleChange" />
     </div>
   </div>
 </template>
