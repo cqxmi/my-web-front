@@ -11,11 +11,11 @@ const onSearch = (searchValue: string) => {
   console.log('or use this.value', values.value)
 }
 
-const value = ref('')
+//markdown
+const value = ref<string>('')
 // 获取书写文档内容
-const handleChange = (v: any) => {
+const handleChange = (v: string) => {
   value.value = v
-  console.log(v)
 }
 </script>
 
@@ -90,7 +90,6 @@ const handleChange = (v: any) => {
       border-bottom: 1px solid #f2f3f5;
       display: flex;
       align-items: center;
-      padding-right: 16px;
       justify-content: flex-end;
       .button {
         margin-right: 16px;
