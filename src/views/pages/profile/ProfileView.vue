@@ -1,17 +1,10 @@
 <script setup lang="ts">
-import gfm from '@bytemd/plugin-gfm'
-import { Editor } from '@bytemd/vue'
 import { ref } from 'vue'
 //搜索框
 const values = ref<string>('')
 const onSearch = (searchValue: string) => {
   console.log('use value', searchValue)
   console.log('or use this.value', values.value)
-}
-const plugins = [gfm()]
-const value = ref<string>('')
-const handleChange = (v:any) => {
-  value.value = v
 }
 </script>
 
@@ -47,7 +40,6 @@ const handleChange = (v:any) => {
         <a-button class="button edit">编辑</a-button>
         <a-button class="button delete" danger>删除</a-button>
       </div>
-      <Editor :value="value" :plugins="plugins" @change="handleChange" />
     </div>
   </div>
 </template>
@@ -79,37 +71,37 @@ const handleChange = (v:any) => {
     }
   }
   .box-right {
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     .profile-buttons {
-      height:50px;
+      height: 50px;
       border-bottom: 1px solid #f2f3f5;
-      display:flex;
+      display: flex;
       align-items: center;
-      padding-right:16px;
+      padding-right: 16px;
       justify-content: flex-end;
       .button {
-        margin-right:16px;
+        margin-right: 16px;
       }
       .create {
-        color:#66c497;
+        color: #66c497;
         border-color: #66c497;
       }
       .edit {
-        color:#66c497;
+        color: #66c497;
         border-color: #66c497;
       }
       .create:hover {
         background-color: #66c497;
-        color:white;
+        color: white;
       }
       .edit:hover {
         background-color: #66c497;
-        color:white;
+        color: white;
       }
       .delete:hover {
         background-color: #ff4d4f;
-        color:white;
+        color: white;
       }
     }
   }
