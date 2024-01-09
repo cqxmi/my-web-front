@@ -1,10 +1,21 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import 'bytemd/dist/index.css'
+import { Editor } from '@bytemd/vue-next'
+import zhHans from 'bytemd/lib/locales/zh_Hans.json' // 汉化
+
 //搜索框
 const values = ref<string>('')
 const onSearch = (searchValue: string) => {
   console.log('use value', searchValue)
   console.log('or use this.value', values.value)
+}
+
+const value = ref('')
+// 获取书写文档内容
+const handleChange = (v: any) => {
+  value.value = v
+  console.log(v)
 }
 </script>
 
@@ -40,6 +51,7 @@ const onSearch = (searchValue: string) => {
         <a-button class="button edit">编辑</a-button>
         <a-button class="button delete" danger>删除</a-button>
       </div>
+      <Editor class="editos" :value="value" @change="handleChange" :locale="zhHans" />
     </div>
   </div>
 </template>
@@ -105,5 +117,8 @@ const onSearch = (searchValue: string) => {
       }
     }
   }
+}
+::v-deep .bytemd {
+  height: calc(100vh - 127px) !important;
 }
 </style>
