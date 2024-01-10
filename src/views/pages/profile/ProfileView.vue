@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import 'bytemd/dist/index.css'
 import { Editor } from '@bytemd/vue-next'
 import zhHans from 'bytemd/lib/locales/zh_Hans.json' // 汉化
+import { PlusOutlined } from '@ant-design/icons-vue'
 
 //搜索框
 const values = ref<string>('')
@@ -29,6 +30,7 @@ const handleChange = (v: string) => {
           enter-button
           @search="onSearch"
         />
+        <a-button class="button create"><PlusOutlined /></a-button>
       </div>
       <div class="profile-list">
         <div class="profile-detail"></div>
@@ -47,7 +49,6 @@ const handleChange = (v: string) => {
     </div>
     <div class="box-right">
       <div class="profile-buttons">
-        <a-button class="button create">创建</a-button>
         <a-button class="button edit">编辑</a-button>
         <a-button class="button delete" danger>删除</a-button>
       </div>
@@ -67,7 +68,6 @@ const handleChange = (v: string) => {
     flex-direction: column;
     border-right: 1px solid #f2f3f5;
     .search {
-      padding-right: 26px;
       margin-bottom: 20px;
     }
     .profile-list {
@@ -119,5 +119,17 @@ const handleChange = (v: string) => {
 }
 ::v-deep .bytemd {
   height: calc(100vh - 127px) !important;
+}
+.create {
+  color: #66c497;
+  border-color: #66c497;
+}
+.create:hover {
+  background-color: #66c497;
+  color: white;
+}
+::v-deep .ant-input-search {
+  width:81% !important;
+  margin-right:5px;
 }
 </style>
