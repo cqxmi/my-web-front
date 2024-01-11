@@ -5,9 +5,13 @@ const month = ref<Dayjs>()
 </script>
 
 <template>
-  <div>
+  <div class="main-body">
     <a-date-picker v-model:value="month" picker="month" />
   </div>
 </template>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.main-body {
+  padding: 16px;
+}
+</style>
