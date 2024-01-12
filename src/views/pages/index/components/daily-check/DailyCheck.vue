@@ -7,6 +7,7 @@ const month = ref<Dayjs>()
 <template>
   <div class="main-body">
     <a-date-picker v-model:value="month" picker="month" />
+    <a-progress :percent="50" style="width:200px;"/>
   </div>
 </template>
 
