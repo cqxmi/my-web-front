@@ -7,7 +7,15 @@ const month = ref<Dayjs>()
 <template>
   <div class="main-body">
     <a-date-picker v-model:value="month" picker="month" />
-    <a-progress :percent="50" style="width:200px;"/>
+    <div>
+      <div>
+        <a-button type="primary" shape="circle" size="large">
+          打卡
+        </a-button>
+        <a-progress :percent="50" style="width:200px;" strokeColor="#52c41a" />
+      </div>
+    </div>
+
   </div>
 </template>
 
