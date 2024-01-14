@@ -15,7 +15,6 @@ const month = ref<Dayjs>()
         <a-progress :percent="50" style="width:200px;" strokeColor="#52c41a" />
       </div>
     </div>
-
   </div>
 </template>
 
