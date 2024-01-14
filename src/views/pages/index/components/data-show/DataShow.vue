@@ -4,10 +4,7 @@ import { onMounted } from 'vue'
 import * as echarts from 'echarts';
 
 // 基于准备好的dom，初始化echarts实例
-const myChart = echarts.init(document.querySelector('.main') as HTMLElement, null, {
-  width: 600,
-  height: 400
-});
+const myChart = echarts.init(document.querySelector('.main') as HTMLElement);
 
 onMounted(() => {
   // 绘制图表
@@ -33,16 +30,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <div class="main">
+  <div class="main-box">
+    <div class="main" style="width: 600px;height:400px;">
       数据展示
     </div>
   </div>
 </template>
 
 <style scoped lang="less">
-.main {
-  width: 200px;
-  height: 200px;
+.main-box {
+  width: 600px;
+  height: 400px;
 }
 </style>
