@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FormOutlined, DownloadOutlined, CopyrightOutlined } from '@ant-design/icons-vue'
+import { FormOutlined, DownloadOutlined, CopyOutlined } from '@ant-design/icons-vue'
 </script>
 
 <template>
@@ -7,33 +7,144 @@ import { FormOutlined, DownloadOutlined, CopyrightOutlined } from '@ant-design/i
     <div class="main-list">
       <div class="main-row">
         <div class="pic-item">
-          <div class="pic-icon"></div>
+          <img class="pic-icon" src="../../../assets/pic/example.png"/>
           <div class="pic-buttons">
-            <a-button shape="circle">
-              <template #icon>
-                <FormOutlined />
+            <a-tooltip placement="right" color="white">
+              <template #title>
+                <span style="color:black">编辑</span>
               </template>
-            </a-button>
-            <a-button shape="circle">
-              <template #icon>
-                <CopyrightOutlined />
+              <a-button shape="circle" size="large">
+                <template #icon>
+                  <FormOutlined />
+                </template>
+              </a-button>
+            </a-tooltip>
+            <a-tooltip placement="right" color="white">
+              <template #title>
+                <span style="color:black">复制</span>
               </template>
-            </a-button>
-            <a-button shape="circle">
-              <template #icon>
-                <DownloadOutlined />
+              <a-button shape="circle" size="large">
+                <template #icon>
+                  <CopyOutlined />
+                </template>
+              </a-button>
+            </a-tooltip>
+            <a-tooltip placement="right" color="white">
+              <template #title>
+                <span style="color:black">下载</span>
               </template>
-            </a-button>
+              <a-button shape="circle" size="large">
+                <template #icon>
+                  <DownloadOutlined />
+                </template>
+              </a-button>
+            </a-tooltip>
           </div>
         </div>
         <div class="pic-item">
-          <div class="pic-icon"></div>
+          <img class="pic-icon" src="../../../assets/pic/example.png"/>
+          <div class="pic-buttons">
+            <a-tooltip placement="right" color="white">
+              <template #title>
+                <span style="color:black">编辑</span>
+              </template>
+              <a-button shape="circle" size="large">
+                <template #icon>
+                  <FormOutlined />
+                </template>
+              </a-button>
+            </a-tooltip>
+            <a-tooltip placement="right" color="white">
+              <template #title>
+                <span style="color:black">复制</span>
+              </template>
+              <a-button shape="circle" size="large">
+                <template #icon>
+                  <CopyOutlined />
+                </template>
+              </a-button>
+            </a-tooltip>
+            <a-tooltip placement="right" color="white">
+              <template #title>
+                <span style="color:black">下载</span>
+              </template>
+              <a-button shape="circle" size="large">
+                <template #icon>
+                  <DownloadOutlined />
+                </template>
+              </a-button>
+            </a-tooltip>
+          </div>
         </div>
         <div class="pic-item">
-          <div class="pic-icon"></div>
+          <img class="pic-icon" src="../../../assets/pic/example.png"/>
+          <div class="pic-buttons">
+            <a-tooltip placement="right" color="white">
+              <template #title>
+                <span style="color:black">编辑</span>
+              </template>
+              <a-button shape="circle" size="large">
+                <template #icon>
+                  <FormOutlined />
+                </template>
+              </a-button>
+            </a-tooltip>
+            <a-tooltip placement="right" color="white">
+              <template #title>
+                <span style="color:black">复制</span>
+              </template>
+              <a-button shape="circle" size="large">
+                <template #icon>
+                  <CopyOutlined />
+                </template>
+              </a-button>
+            </a-tooltip>
+            <a-tooltip placement="right" color="white">
+              <template #title>
+                <span style="color:black">下载</span>
+              </template>
+              <a-button shape="circle" size="large">
+                <template #icon>
+                  <DownloadOutlined />
+                </template>
+              </a-button>
+            </a-tooltip>
+          </div>
         </div>
         <div class="pic-item">
-          <div class="pic-icon"></div>
+          <img class="pic-icon" src="../../../assets/pic/example.png"/>
+          <div class="pic-buttons">
+            <a-tooltip placement="right" color="white">
+              <template #title>
+                <span style="color:black">编辑</span>
+              </template>
+              <a-button shape="circle" size="large">
+                <template #icon>
+                  <FormOutlined />
+                </template>
+              </a-button>
+            </a-tooltip>
+            <a-tooltip placement="right" color="white">
+              <template #title>
+                <span style="color:black">复制</span>
+              </template>
+              <a-button shape="circle" size="large">
+                <template #icon>
+                  <CopyOutlined />
+                </template>
+              </a-button>
+            </a-tooltip>
+            <a-tooltip placement="right" color="white">
+              <template #title>
+                <span style="color:black">下载</span>
+              </template>
+              <a-button shape="circle" size="large">
+                <template #icon>
+                  <DownloadOutlined />
+                </template>
+              </a-button>
+            </a-tooltip>
+          </div>
         </div>
       </div>
     </div>
@@ -53,13 +164,12 @@ import { FormOutlined, DownloadOutlined, CopyrightOutlined } from '@ant-design/i
       .pic-item {
         display: flex;
         .pic-icon {
-          width: 240px;
-          height: 135px;
-          background-color: pink;
+          width: 332px;
+          height: 186px;
         }
         .pic-buttons {
-          width: 40px;
-          height: 135px;
+          width: 50px;
+          height: 186px;
           display: flex;
           justify-content: space-evenly;
           flex-direction: column;
