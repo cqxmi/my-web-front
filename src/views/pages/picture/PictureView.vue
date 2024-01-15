@@ -3,20 +3,19 @@
 <template>
   <div class="main-box">
     <div class="main-list">
-      <div class="pic-item">
-        <div class="pic-icon"></div>
-      </div>
-      <div class="pic-item">
-        <div class="pic-icon"></div>
-      </div>
-      <div class="pic-item">
-        <div class="pic-icon"></div>
-      </div>
-      <div class="pic-item">
-        <div class="pic-icon"></div>
-      </div>
-      <div class="pic-item">
-        <div class="pic-icon"></div>
+      <div class="main-row">
+        <div class="pic-item">
+          <div class="pic-icon"></div>
+        </div>
+        <div class="pic-item">
+          <div class="pic-icon"></div>
+        </div>
+        <div class="pic-item">
+          <div class="pic-icon"></div>
+        </div>
+        <div class="pic-item">
+          <div class="pic-icon"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -24,19 +23,22 @@
 
 <style scoped lang="less">
 .main-box {
+  width:100%;
   .main-list {
-    display: flex;
-    flex-wrap: wrap;
-
-    .pic-item {
-      margin-left:16px;
-      .pic-icon {
-        width: 300px;
-        height: 135px;
-        background-color: pink;
+    width:100%;
+    .main-row {
+      width:100%;
+      display: flex;
+      justify-content: space-evenly;
+      padding-top:16px;
+      .pic-item {
+        .pic-icon {
+          width: 380px;
+          height: 120px;
+          background-color: pink;
+        }
       }
     }
   }
-
 }
 </style>
