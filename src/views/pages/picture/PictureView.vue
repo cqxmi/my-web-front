@@ -21,7 +21,7 @@ import { FormOutlined, DownloadOutlined, CopyrightOutlined } from '@ant-design/i
             </a-button>
             <a-button shape="circle">
               <template #icon>
-                <DownloadOutlined />]
+                <DownloadOutlined />
               </template>
             </a-button>
           </div>
