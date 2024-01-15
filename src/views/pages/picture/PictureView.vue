@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { FormOutlined, DownloadOutlined, CopyrightOutlined } from '@ant-design/icons-vue'
+</script>
 
 <template>
   <div class="main-box">
@@ -7,9 +9,21 @@
         <div class="pic-item">
           <div class="pic-icon"></div>
           <div class="pic-buttons">
-            <div class="button-edit">编辑</div>
-            <div class="button-copy">复制</div>
-            <div class="button-download">下载</div>
+            <a-button shape="circle">
+              <template #icon>
+                <FormOutlined />
+              </template>
+            </a-button>
+            <a-button shape="circle">
+              <template #icon>
+                <CopyrightOutlined />
+              </template>
+            </a-button>
+            <a-button shape="circle">
+              <template #icon>
+                <DownloadOutlined />
+              </template>
+            </a-button>
           </div>
         </div>
         <div class="pic-item">
@@ -44,12 +58,12 @@
           background-color: pink;
         }
         .pic-buttons {
-          width:40px;
-          height:135px;
-          background-color: lightblue;
-          display:flex;
+          width: 40px;
+          height: 135px;
+          display: flex;
           justify-content: space-evenly;
           flex-direction: column;
+          align-items: center;
         }
       }
     }
