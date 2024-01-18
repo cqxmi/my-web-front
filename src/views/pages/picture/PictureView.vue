@@ -54,8 +54,8 @@ import { FormOutlined, DownloadOutlined, CopyOutlined } from '@ant-design/icons-
     .main-row {
       width: 100%;
       display: flex;
-      justify-content: space-evenly;
       padding-top: 16px;
+      padding-left:16px;
       .pic-item {
         position: relative;
         .pic-icon {
